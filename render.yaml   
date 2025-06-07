@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: akashee-draw-intelligence-backend
+    env: python
+    buildCommand: ""
+    startCommand: uvicorn server.main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: PORT
+        value: 10000
+    plan: free
+    buildFilter:
+      paths:
+        - server/**
+
+  - type: web
+    name: akashee-draw-intelligence-frontend
+    env: static
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/dist
+    buildFilter:
+      paths:
+        - client/**
