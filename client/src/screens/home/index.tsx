@@ -29,7 +29,7 @@ export default function Home() {
   const [infoOpened, setInfoOpened] = useState(false);
   const [color, setColor] = useState("rgb(0,0,0)");
   const [reset, setReset] = useState(false);
-  const [result, setResult] = useState<GeneratedResponse | undefined>(undefined);
+  const [_result, setResult] = useState<GeneratedResponse | undefined>(undefined);
   const [latexItems, setLatexItems] = useState<
     { id: number; expression: string; position: { x: number; y: number } }[]
   >([]);
@@ -187,7 +187,7 @@ export default function Home() {
     const canva = canvas.current;
     const ctx = ctxRef.current;
     if (!canva || !ctx) return;
-
+    //http://localhost:8900
     const url = `${import.meta.env.VITE_API_URL}/calculate`; // Make sure you define this env var
 
     // Check if canvas is blank
