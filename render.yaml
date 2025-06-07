@@ -3,8 +3,12 @@ services:
     name: akashee-draw-intelligence-backend
     env: python
     root: server
-    buildCommand: pip install -r ../requirements.txt && pip list
-    startCommand: pip show uvicorn && python -m uvicorn main:app --host 0.0.0.0 --port 10000
+    buildCommand: pip install -r requirements.txt && pip list
+    preStartCommand: |
+      pip show uvicorn
+      which python
+      which uvicorn
+    startCommand: python -m uvicorn main:app --host 0.0.0.0 --port 10000
     envVars:
       - key: PORT
         value: 10000
