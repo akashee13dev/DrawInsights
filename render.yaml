@@ -1,14 +1,16 @@
 services:
- - type: web
+  - type: web
     name: akashee-draw-intelligence-backend
     env: python
-    pythonVersion: "3.11"
     root: server
-    buildCommand: "pip install -r ../requirements.txt"
-    startCommand: "python -m uvicorn main:app --host 0.0.0.0 --port 10000"
+    buildCommand: pip install -r ../requirements.txt
+    startCommand: python -m uvicorn main:app --host 0.0.0.0 --port 10000
     envVars:
       - key: PORT
         value: 10000
+    env:
+      - key: RENDER_PYTHON_USE_POETRY
+        value: "false"
     plan: free
     buildFilter:
       paths:
